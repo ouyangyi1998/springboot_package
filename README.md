@@ -13,5 +13,5 @@
     - sourceDirectory：该元素设置了项目源码目录，当构建项目的时候，构建系统会编译目录里的源码。
     - 在plugin中配置fork：fork is enable,用于明确表示编译版本配置的可用，和mainclass：锁定springboot启动器
 - 在springboot启动器，继承SpringbootServletInitializer，配置configue
-  - 外部容器部署的话，就不能依赖于Application的main函数了，而是要以类似于web.xml文件配置的方式来启动Spring应用上下文，
+  - 外部容器部署的话，就不能依赖于Application的main函数了，而是要以类似于web.xml文件配置的方式来启动Spring应用上下文
   - 此时我们需要在启动类中继承SpringBootServletInitializer并实现configure方法
