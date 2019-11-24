@@ -1,0 +1,15 @@
+# ubuntu tomcat8 部署springboot
+- 在ubuntu上部署tomcat
+  - 在ubuntu环境下安装tomcat,设置好JAVA_HOME等环境变量，openjdk的默认路径通过 java -verbose
+  - 得知jvm路径为 /usr/lib/jvm/java-1.8.0-openjdk-amd64 
+  - 修改tomcat启动脚本，进入tomcat的bin目录下：sudo gedit startup.sh 配置环境变量(JAVA_HOME什么的。。。)
+  - 通过 ./startup.sh ./shutdown.sh 来关闭tomcat脚本
+- 建立springboot工程
+  - 在设置中调整<package>war</package>,打包为web应用，在maven中建立语句：mvn clean package 实现打包（在target中生成springboot_package.war）
+  - 在pom.xml文件中排除springboot自带tomcat的依赖,<scope>provided</scope>
+  - 在<build>中的设置
+    - defaultGoal：执行build任务时，如果没有指定目标，将使用的默认值，如：在命令行中执行mvn，则相当于执行mvn install；
+    - finalName：build目标文件的文件名
+    - sourceDirectory：该元素设置了项目源码目录，当构建项目的时候，构建系统会编译目录里的源码。
+    - 在plugin中配置fork：fork is enable,用于明确表示编译版本配置的可用，和mainclass：锁定springboot启动器
+- 在springboot启动器，配置
